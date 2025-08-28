@@ -11,10 +11,22 @@ import studio from "@theatre/studio";
 
 import { editable as e } from "@theatre/r3f";
 
-studio.initialize();
-studio.extend(extension);
+import projectState from "./assets/MedievalTownVideo.theatre-project-state.json";
 
-const project = getProject("MedievalTownVideo");
+export const isProd = import.meta.env.MODE === "production";
+
+if (!isProd) {
+  studio.initialize();
+  studio.extend(extension);
+}
+const project = getProject(
+  "MedievalTownVideo",
+  isPRod
+    ? {
+        state: projectState,
+      }
+    : undefined
+);
 const mainSheet = project.sheet("Main");
 
 const transitions = {
