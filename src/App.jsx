@@ -21,7 +21,7 @@ if (!isProd) {
 }
 const project = getProject(
   "MedievalTownVideo",
-  isPRod
+  isProd
     ? {
         state: projectState,
       }
